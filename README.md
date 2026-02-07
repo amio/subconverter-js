@@ -11,6 +11,17 @@ Utility to convert between various proxy subscription formats.
 
 [中文文档](https://github.com/tindy2013/subconverter/blob/master/README-cn.md)
 
+## 📦 JavaScript Library
+
+A pure JavaScript implementation is now available in the [`js/`](./js) directory! Use it in Node.js or browsers:
+
+```javascript
+import { subconvert } from 'subconverter';
+const clashConfig = subconvert(subscriptionString, 'clash');
+```
+
+See [js/README.md](./js/README.md) for full documentation.
+
 - [subconverter](#subconverter)
   - [Supported Types](#supported-types)
   - [Quick Usage](#quick-usage)
