@@ -9,6 +9,19 @@
 
 * * *
 
+## 📦 JavaScript 库
+
+现在提供了纯 JavaScript 实现，位于 [`js/`](./js) 目录！可在 Node.js 或浏览器中使用：
+
+```javascript
+import { subconvert } from 'subconverter';
+const clashConfig = subconvert(subscriptionString, 'clash');
+```
+
+查看 [js/README-cn.md](./js/README-cn.md) 获取完整文档。
+
+* * *
+
 ## 新增内容
 
 2021/10/1
