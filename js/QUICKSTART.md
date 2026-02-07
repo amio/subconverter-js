@@ -6,12 +6,15 @@ This directory contains a pure JavaScript implementation of subconverter that ca
 
 This is a standalone JavaScript library that extracts the core conversion functionality from the C++ subconverter implementation. It provides a simple API to convert between various proxy subscription formats without needing to run a server.
 
+It also includes a **command-line interface (CLI)** for quick conversions.
+
 ## Features
 
 - 🔄 **Convert between formats**: Clash, Surge, Quantumult X, V2Ray, SingBox, and raw proxy links
 - 📦 **Parse multiple protocols**: SS, SSR, VMess, Trojan
 - 🌐 **Universal**: Works in Node.js and browsers
 - 🎯 **Simple API**: `subconvert(subscriptionString, target, options)`
+- 💻 **CLI Tool**: Command-line interface for quick conversions
 - 📝 **TypeScript support**: Full type definitions included
 
 ## Installation
@@ -21,7 +24,21 @@ cd js
 npm install
 ```
 
-## Quick Example
+## Quick Start with CLI
+
+```bash
+# Run CLI tool directly
+node src/cli.js --url "https://example.com/sub" --target clash
+
+# Or install globally and use anywhere
+npm install -g .
+subconverter --url ./subscription.txt --target surge --output surge.conf
+
+# Get help
+node src/cli.js --help
+```
+
+## Quick Example (Library)
 
 ```javascript
 import { subconvert } from './src/index.js';

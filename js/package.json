@@ -5,6 +5,9 @@
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "type": "module",
+  "bin": {
+    "subconverter": "./src/cli.js"
+  },
   "exports": {
     ".": {
       "import": "./src/index.js",
@@ -14,7 +17,8 @@
   },
   "scripts": {
     "test": "node --test test/*.test.js",
-    "example": "node examples/basic.js"
+    "example": "node examples/basic.js",
+    "cli": "node src/cli.js"
   },
   "keywords": [
     "proxy",
