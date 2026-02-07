@@ -7,6 +7,7 @@ Subconverter 的 JavaScript 实现 - 在各种代理订阅格式之间进行转�
 - ✅ **多种输入格式**：SS、SSR、VMess、Trojan
 - ✅ **多种输出格式**：Clash、Surge、Quantumult X、V2Ray、SingBox 及原始链接
 - ✅ **通用兼容**：支持 Node.js 和浏览器环境
+- ✅ **命令行工具**：提供 CLI 工具快速转换
 - ✅ **模板支持**：支持配置模板和自定义
 - ✅ **零依赖**（除了用于 YAML 输出的 js-yaml）
 
@@ -39,7 +40,42 @@ npm install subconverter
 
 或在浏览器中直接引入脚本。
 
-## 使用方法
+## 命令行使用
+
+该库包含一个 CLI 工具用于快速转换：
+
+```bash
+# 全局安装以使用 CLI
+npm install -g subconverter
+
+# 或使用 npx 无需安装
+npx subconverter --url "https://example.com/sub" --target clash
+
+# 从 URL 转换订阅到 Clash 格式
+subconverter --url "https://example.com/sub" --target clash --output clash.yaml
+
+# 转换本地文件到 Surge
+subconverter --url ./subscription.txt --target surge
+
+# 使用短标志
+subconverter -u "https://example.com/sub" -t v2ray -o v2ray.json
+
+# 打印到标准输出（默认）
+subconverter -u ./subscription.txt -t mixed
+```
+
+### CLI 选项
+
+```
+-u, --url <url>       订阅 URL 或文件路径（必需）
+-t, --target <format> 目标格式（必需）
+                      支持：clash、clashr、surge、quanx、v2ray、
+                           ss、ssr、trojan、mixed、singbox
+-o, --output <file>   输出文件路径（默认：标准输出）
+-h, --help           显示帮助信息
+```
+
+## 库使用方法
 
 ### 基本用法
 

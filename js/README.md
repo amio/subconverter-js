@@ -7,6 +7,7 @@ JavaScript implementation of subconverter - converts between various proxy subsc
 - ✅ **Multiple Input Formats**: SS, SSR, VMess, Trojan
 - ✅ **Multiple Output Formats**: Clash, Surge, Quantumult X, V2Ray, SingBox, and raw links
 - ✅ **Universal**: Works in both Node.js and browser environments
+- ✅ **CLI Tool**: Command-line interface for quick conversions
 - ✅ **Template Support**: Supports configuration templates and customization
 - ✅ **Zero Dependencies** (except js-yaml for YAML output)
 
@@ -39,7 +40,42 @@ npm install subconverter
 
 Or for browser usage, include the script directly.
 
-## Usage
+## Command-Line Usage
+
+The library includes a CLI tool for quick conversions:
+
+```bash
+# Install globally to use the CLI
+npm install -g subconverter
+
+# Or use npx without installation
+npx subconverter --url "https://example.com/sub" --target clash
+
+# Convert subscription from URL to Clash format
+subconverter --url "https://example.com/sub" --target clash --output clash.yaml
+
+# Convert local file to Surge
+subconverter --url ./subscription.txt --target surge
+
+# Short flags
+subconverter -u "https://example.com/sub" -t v2ray -o v2ray.json
+
+# Print to stdout (default)
+subconverter -u ./subscription.txt -t mixed
+```
+
+### CLI Options
+
+```
+-u, --url <url>       Subscription URL or file path to convert (required)
+-t, --target <format> Target format (required)
+                      Supported: clash, clashr, surge, quanx, v2ray,
+                                 ss, ssr, trojan, mixed, singbox
+-o, --output <file>   Output file path (default: stdout)
+-h, --help           Show help message
+```
+
+## Library Usage
 
 ### Basic Usage
 
