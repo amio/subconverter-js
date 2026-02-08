@@ -135,7 +135,9 @@ export function generateClash(proxies, options = {}) {
     logLevel = 'info',
     externalController = '127.0.0.1:9090',
     groups = [],
-    rules = []
+    rules = [],
+    ruleProviders,
+    'rule-providers': ruleProvidersDash
   } = options;
   
   // Convert all proxies
@@ -163,8 +165,8 @@ export function generateClash(proxies, options = {}) {
   const clashRules = rules.length > 0 ? rules : [
     'MATCH,PROXY'
   ];
-  
-  return {
+
+  const result = {
     port,
     'socks-port': socksPort,
     'allow-lan': allowLan,
@@ -175,4 +177,11 @@ export function generateClash(proxies, options = {}) {
     'proxy-groups': proxyGroups,
     rules: clashRules
   };
+
+  const finalRuleProviders = ruleProvidersDash || ruleProviders;
+  if (finalRuleProviders && Object.keys(finalRuleProviders).length > 0) {
+    result['rule-providers'] = finalRuleProviders;
+  }
+
+  return result;
 }

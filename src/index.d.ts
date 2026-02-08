@@ -93,6 +93,8 @@ export interface ClashOptions {
   externalController?: string;
   groups?: ClashProxyGroup[];
   rules?: string[];
+  ruleProviders?: Record<string, any>;
+  'rule-providers'?: Record<string, any>;
 }
 
 export interface SurgeOptions {
