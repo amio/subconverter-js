@@ -1,6 +1,6 @@
 # Configuration File Guide
 
-The CLI supports advanced configuration through JSON config files using the `-c` or `--config` option.
+The CLI supports advanced configuration through JSON or YAML config files using the `-c` or `--config` option.
 
 ## Config File Structure
 
@@ -19,6 +19,8 @@ The CLI supports advanced configuration through JSON config files using the `-c`
   "outputJson": false
 }
 ```
+
+The same keys can be provided in YAML files with `.yml` or `.yaml` extensions.
 
 ## Configuration Options
 

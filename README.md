@@ -84,13 +84,13 @@ subconverter -u ./subscription.txt -t mixed
                       Supported: clash, clashr, surge, quanx, v2ray,
                                  ss, ssr, trojan, mixed, singbox
 -o, --output <file>   Output file path (default: stdout)
--c, --config <file>   Configuration file for advanced options (JSON format)
+-c, --config <file>   Configuration file for advanced options (JSON/YAML format)
 -h, --help           Show help message
 ```
 
 ### Advanced Configuration
 
-Use `-c` or `--config` to specify a JSON configuration file for advanced options:
+Use `-c` or `--config` to specify a JSON or YAML configuration file for advanced options:
 
 ```bash
 # Filter nodes and customize output

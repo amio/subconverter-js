@@ -58,7 +58,7 @@ Options:
                         Supported: clash, clashr, surge, quanx, v2ray,
                                    ss, ssr, trojan, mixed, singbox
   -o, --output <file>   Output file path (default: stdout)
-  -c, --config <file>   Configuration file for advanced options (JSON format)
+  -c, --config <file>   Configuration file for advanced options (JSON/YAML format)
   -h, --help           Show this help message
 
 Examples:
@@ -84,7 +84,7 @@ Supported target formats:
   trojan         - Trojan links
   mixed          - Mixed format (all proxy types)
 
-Config file format (JSON):
+Config file format (JSON/YAML):
   {
     "excludeRemarks": ["regex_pattern"],
     "includeRemarks": ["regex_pattern"],

@@ -84,13 +84,13 @@ subconverter -u ./subscription.txt -t mixed
                       支持：clash、clashr、surge、quanx、v2ray、
                            ss、ssr、trojan、mixed、singbox
 -o, --output <file>   输出文件路径（默认：标准输出）
--c, --config <file>   高级选项配置文件（JSON 格式）
+-c, --config <file>   高级选项配置文件（JSON/YAML 格式）
 -h, --help           显示帮助信息
 ```
 
 ### 高级配置
 
-使用 `-c` 或 `--config` 指定 JSON 配置文件以实现高级选项：
+使用 `-c` 或 `--config` 指定 JSON 或 YAML 配置文件以实现高级选项：
 
 ```bash
 # 过滤节点并自定义输出
