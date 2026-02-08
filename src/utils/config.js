@@ -43,7 +43,12 @@ export function loadConfig(configPath) {
   }
   
   try {
-    const content = fs.readFileSync(configPath, 'utf-8');
+    let content;
+    try {
+      content = fs.readFileSync(configPath, 'utf-8');
+    } catch (error) {
+      throw new Error(`Failed to read config file: ${error.message}`);
+    }
     const lowerPath = configPath.toLowerCase();
     const isYaml = lowerPath.endsWith('.yml') || lowerPath.endsWith('.yaml');
     let rawConfig;
