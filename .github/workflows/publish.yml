@@ -1,0 +1,28 @@
+name: Publish Package
+
+on:
+  push:
+    # branches:
+    #   - main
+    tags:
+      - 'v*' # Trigger on version tags, e.g., v1.0.0
+
+permissions:
+  id-token: write # Required for OIDC
+  contents: read # Allows checking out the repository code
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          # registry-url: 'https://registry.npmjs.org' # Specifies the npm registry
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm test
+      - run: rm -f .npmrc ~/.npmrc # Ensure no existing npm tokens interfere
+      - run: unset NODE_AUTH_TOKEN; unset NPM_TOKEN; # Unset the default token set by "actions/setup-node" to get OIDC publishing working
+      - run: npm publish --loglevel silly # The npm CLI automatically uses the OIDC token
