@@ -46,10 +46,16 @@ export function loadConfig(configPath) {
     const content = fs.readFileSync(configPath, 'utf-8');
     const lowerPath = configPath.toLowerCase();
     const isYaml = lowerPath.endsWith('.yml') || lowerPath.endsWith('.yaml');
-    const rawConfig = isYaml ? yaml.load(content) : JSON.parse(content);
-    const config = rawConfig && typeof rawConfig === 'object' && !Array.isArray(rawConfig)
-      ? rawConfig
-      : {};
+    let rawConfig;
+    try {
+      rawConfig = isYaml ? yaml.load(content) : JSON.parse(content);
+    } catch (error) {
+      throw new Error(`Failed to parse ${isYaml ? 'YAML' : 'JSON'} config: ${error.message}`);
+    }
+    if (!rawConfig || typeof rawConfig !== 'object' || Array.isArray(rawConfig)) {
+      throw new Error('Config file must contain a top-level object');
+    }
+    const config = rawConfig;
     
     // Merge with defaults
     return {
