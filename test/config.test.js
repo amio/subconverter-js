@@ -57,7 +57,7 @@ test('loadConfig supports JSON files', () => {
 test('loadConfig throws on invalid YAML', () => {
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'subconverter-config-'));
   const configPath = path.join(tempDir, 'pref.yml');
-  const yamlContent = 'clashOptions: [\n';
+  const yamlContent = 'rules:\n  - MATCH\n - misaligned\n';
 
   try {
     fs.writeFileSync(configPath, yamlContent, 'utf-8');

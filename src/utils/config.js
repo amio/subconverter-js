@@ -55,10 +55,17 @@ export function loadConfig(configPath) {
     try {
       rawConfig = isYaml ? yaml.load(content) : JSON.parse(content);
     } catch (error) {
-      throw new Error(`Failed to parse ${isYaml ? 'YAML' : 'JSON'} config: ${error.message}`);
+      throw new Error(`Failed to parse ${isYaml ? 'YAML' : 'JSON'} config: ${error.message}`, {
+        cause: error
+      });
     }
     if (!rawConfig || typeof rawConfig !== 'object' || Array.isArray(rawConfig)) {
-      throw new Error('Config file must contain a top-level object');
+      const receivedType = rawConfig === null
+        ? 'null'
+        : Array.isArray(rawConfig)
+          ? 'array'
+          : typeof rawConfig;
+      throw new Error(`Config file must contain a top-level object, received: ${receivedType}`);
     }
     const config = rawConfig;
     
