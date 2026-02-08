@@ -55,9 +55,7 @@ export function loadConfig(configPath) {
     try {
       rawConfig = isYaml ? yaml.load(content) : JSON.parse(content);
     } catch (error) {
-      throw new Error(`Failed to parse ${isYaml ? 'YAML' : 'JSON'} config: ${error.message}`, {
-        cause: error
-      });
+      throw new Error(`Failed to parse ${isYaml ? 'YAML' : 'JSON'} config: ${error.message}`);
     }
     if (!rawConfig || typeof rawConfig !== 'object' || Array.isArray(rawConfig)) {
       const receivedType = rawConfig === null
