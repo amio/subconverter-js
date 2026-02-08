@@ -59,16 +59,16 @@ export function loadConfig(configPath) {
     } catch (error) {
       throw new Error(`Failed to parse ${isYaml ? 'YAML' : 'JSON'} config: ${displayPath} - ${error.message}`);
     }
-    let receivedType;
+    let configType;
     if (Array.isArray(rawConfig)) {
-      receivedType = 'array';
+      configType = 'array';
     } else if (rawConfig === null) {
-      receivedType = 'null';
+      configType = 'null';
     } else {
-      receivedType = typeof rawConfig;
+      configType = typeof rawConfig;
     }
-    if (receivedType !== 'object') {
-      throw new Error(`Config file must contain a top-level object, received: ${receivedType}`);
+    if (configType !== 'object') {
+      throw new Error(`Config file must contain a top-level object, received: ${configType}`);
     }
     const config = rawConfig;
     
